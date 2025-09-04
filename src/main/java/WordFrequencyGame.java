@@ -39,10 +39,10 @@ public class WordFrequencyGame {
     }
 
     private List<Input> countWordFrequency(String[] words) {
-        Map<String, List<String>> map = groupSameWords(words);
+        Map<String, List<String>> wordGroups = groupSameWords(words);
 
         List<Input> wordFrequencies = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : map.entrySet()){
+        for (Map.Entry<String, List<String>> entry : wordGroups.entrySet()){
             Input input = new Input(entry.getKey(), entry.getValue().size());
             wordFrequencies.add(input);
         }
