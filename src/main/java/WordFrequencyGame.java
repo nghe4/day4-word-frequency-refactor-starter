@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
@@ -45,21 +42,9 @@ public class WordFrequencyGame {
     }
 
     private static Map<String, List<String>> groupSameWords(String[] words) {
-        //get the map for the next step of sizing the same word
-        Map<String, List<String>> map = new HashMap<>();
-        for (String word : words){
-//       map.computeIfAbsent(input.getValue(), k -> new ArrayList<>()).add(input);
-            if (!map.containsKey(word)){
-                ArrayList arr = new ArrayList<>();
-                arr.add(word);
-                map.put(word, arr);
-            }
-
-            else {
-                map.get(word).add(word);
-            }
-        }
-        return map;
+        // ref: https://blog.csdn.net/winterking3/article/details/131671534
+        return Arrays.stream(words)
+                .collect(Collectors.groupingBy(word -> word));
     }
 
 
