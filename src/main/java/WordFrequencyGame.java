@@ -50,23 +50,18 @@ public class WordFrequencyGame {
     }
 
     private static Map<String, List<String>> groupSameWords(String[] words) {
-        List<String> inputList = new ArrayList<>();
-        for (String s : words) {
-            inputList.add(s);
-        }
-
         //get the map for the next step of sizing the same word
         Map<String, List<String>> map = new HashMap<>();
-        for (String input1 : inputList){
+        for (String word : words){
 //       map.computeIfAbsent(input.getValue(), k -> new ArrayList<>()).add(input);
-            if (!map.containsKey(input1)){
+            if (!map.containsKey(word)){
                 ArrayList arr = new ArrayList<>();
-                arr.add(input1);
-                map.put(input1, arr);
+                arr.add(word);
+                map.put(word, arr);
             }
 
             else {
-                map.get(input1).add(input1);
+                map.get(word).add(word);
             }
         }
         return map;
