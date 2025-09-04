@@ -10,16 +10,13 @@ public class WordFrequencyGame {
 
     public String getResult(String inputStr){
 
+        //split the input string with 1 to n pieces of spaces
+        String[] words = inputStr.split(ANY_SPACE_SEPARATOR);
 
-        if (inputStr.split(ANY_SPACE_SEPARATOR).length==1) {
+        if (words.length==1)
             return inputStr + " 1";
-        } else {
-
+        else {
             try {
-
-                //split the input string with 1 to n pieces of spaces
-                String[] words = inputStr.split(ANY_SPACE_SEPARATOR);
-
                 List<Input> wordFrequencies = countWordFrequency(words);
 
                 wordFrequencies.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
