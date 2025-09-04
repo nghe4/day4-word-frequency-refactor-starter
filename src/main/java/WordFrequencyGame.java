@@ -21,18 +21,22 @@ public class WordFrequencyGame {
 
                 wordFrequencies.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
-                StringJoiner joiner = new StringJoiner("\n");
-                for (Input w : wordFrequencies) {
-                    String s = w.getValue() + " " +w.getWordCount();
-                    joiner.add(s);
-                }
-                return joiner.toString();
+                return composeOutput(wordFrequencies);
             } catch (Exception e) {
 
 
                 return "Calculate Error";
             }
         }
+    }
+
+    private static String composeOutput(List<Input> wordFrequencies) {
+        StringJoiner joiner = new StringJoiner("\n");
+        for (Input w : wordFrequencies) {
+            String s = w.getValue() + " " +w.getWordCount();
+            joiner.add(s);
+        }
+        return joiner.toString();
     }
 
     private List<Input> countWordFrequency(String[] words) {
